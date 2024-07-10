@@ -6,6 +6,7 @@ icon = pygame.image.load('images/icon.png')
 pygame.display.set_icon(icon)
 running = True
 while running:
+    screen.fill((52, 98, 237))
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

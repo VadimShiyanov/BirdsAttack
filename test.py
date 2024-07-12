@@ -19,7 +19,7 @@ bird_anim_count = 0
 while running:
     clock.tick(12)
     screen.blit(assets['background'], (0, 0))
-    screen.blit(assets['right_flight'][bird_anim_count], (960, 310))
+    screen.blit(assets['up_flight'][bird_anim_count], (960, 310))
 
     bird_anim_count = (bird_anim_count + 1) % 4  # Обновление счетчика анимации
 

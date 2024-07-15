@@ -4,47 +4,47 @@ from Button import Button
 from background import Background
 from TextInputBox import TextInputBox
 
-def login_screen(screen):
+def register_screen(screen):
     assets = surce_loading()
-
-    pygame.display.set_caption("Login Screen")
+    pygame.display.set_caption("Register Screen")
     pygame.display.set_icon(assets['icon'])
 
     font = assets['font']
-    login_menu = Background(assets['login_menu'])
-    button_login_in_reg = Button(assets['button_login_in_reg'], assets['button_login_in_reg_mouse'], (695, 690))
+    register_menu = Background(assets['register_menu'])
+
+    button_register_in_reg = Button(assets['button_register_in_reg'], assets['button_register_in_reg_mouse'], (695, 690))
     button_back = Button(assets['button_back'], assets['button_back_mouse'], (100, 850))
 
-    login_input_box = TextInputBox(720, 350, 140, 32, font, y_offset=-7)
+    register_input_box = TextInputBox(720, 350, 140, 32, font, y_offset=-23)
     password_input_box = TextInputBox(735, 465, 140, 32, font, y_offset=-7)
 
-    login_screen_running = True
+    register_screen_running = True
 
-    while login_screen_running:
+    while register_screen_running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                login_screen_running = False
+                register_screen_running = False
                 return False
-            login_input_box.handle_event(event)
+            register_input_box.handle_event(event)
             password_input_box.handle_event(event)
 
         mouse = pygame.mouse.get_pos()
-        login_menu.draw(screen)
-        screen.blit(assets['login_string_1'], (720, 350))
-        screen.blit(assets['login_string_2'], (735, 465))
-        login_input_box.update()
+        register_menu.draw(screen)
+        screen.blit(assets['register_string_1'], (725, 335))
+        screen.blit(assets['register_string_2'], (735, 465))
+        register_input_box.update()
         password_input_box.update()
-        login_input_box.draw(screen)
+        register_input_box.draw(screen)
         password_input_box.draw(screen)
 
-        if button_login_in_reg.draw(screen, mouse):
+        if button_register_in_reg.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
-                login_screen_running = False
+                register_screen_running = False
                 return 'menu'
 
         if button_back.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
-                login_screen_running = False
+                register_screen_running = False
                 return 'welcome'
 
         pygame.display.update()

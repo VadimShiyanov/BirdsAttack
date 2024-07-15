@@ -3,6 +3,7 @@ from surce_loading import surce_loading
 from Button import Button
 from background import Background
 from login_screen import login_screen
+from register_screen import register_screen
 from menu import main_menu
 
 pygame.init()
@@ -37,7 +38,12 @@ while running:
         if button_register.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
                 welcome_screen_running = False
-                running = False  # Exit the program
+                next_screen = register_screen(screen)
+                if next_screen == 'quit':
+                    running = False
+                elif next_screen == 'menu':
+                    if not main_menu(screen) == 'quit':
+                        running = False
 
         pygame.display.update()
         for event in pygame.event.get():

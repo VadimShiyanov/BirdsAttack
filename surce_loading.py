@@ -1,9 +1,9 @@
 import pygame
-
 def surce_loading():
     # images
     icon = pygame.image.load('images/icon.png')
     background = pygame.image.load('images/backimg.png')
+    
     up_flight = [pygame.image.load('images/bird_animation/bird1_up.png'),
                  pygame.image.load('images/bird_animation/bird2_up.png'),
                  pygame.image.load('images/bird_animation/bird3_up.png'),
@@ -29,7 +29,10 @@ def surce_loading():
     welcome_bg = pygame.image.load('images/welcome_bg.png')
     login_menu  = pygame.image.load('images/login_menu.png')
     register_menu = pygame.image.load('images/register_menu.png')
-    login_string = pygame.image.load('images/login_string.png')
+    login_string_1 = pygame.image.load('images/login_string_1.png')
+    login_string_2 = pygame.image.load('images/login_string_2.png')
+    register_string_1 = pygame.image.load('images/register_string_1.png')
+    register_string_2 = pygame.image.load('images/register_string_2.png')
     button_login_in_reg = pygame.image.load('images/button_login_in_reg.png')
     button_login_in_reg_mouse = pygame.image.load('images/button_login_in_reg_mouse.png')
     button_register_in_reg = pygame.image.load('images/button_register_in_reg.png')
@@ -63,7 +66,10 @@ def surce_loading():
         'background': background,
         'background_welcome': background_welcome,
         'background_menu': background_menu,
-        'login_string': login_string,
+        'login_string_1': login_string_1,
+        'login_string_2': login_string_2,
+        'register_string_1': register_string_1,
+        'register_string_2': register_string_2,
         'welcome_bg': welcome_bg,
         'login_menu': login_menu,
         'register_menu': register_menu,

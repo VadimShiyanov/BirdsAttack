@@ -29,10 +29,15 @@ def surce_loading():
     welcome_bg = pygame.image.load('images/welcome_bg.png')
     login_menu  = pygame.image.load('images/login_menu.png')
     register_menu = pygame.image.load('images/register_menu.png')
+    bg_end_screen = pygame.image.load('images/bg_end_screen.png')
     login_string_1 = pygame.image.load('images/login_string_1.png')
     login_string_2 = pygame.image.load('images/login_string_2.png')
     register_string_1 = pygame.image.load('images/register_string_1.png')
     register_string_2 = pygame.image.load('images/register_string_2.png')
+    button_main_menu = pygame.image.load('images/button_main_menu.png')
+    button_main_menu_mouse = pygame.image.load('images/button_main_menu_mouse.png')
+    button_replay = pygame.image.load('images/button_replay.png')
+    button_replay_mouse = pygame.image.load('images/button_replay_mouse.png')
     button_login_in_reg = pygame.image.load('images/button_login_in_reg.png')
     button_login_in_reg_mouse = pygame.image.load('images/button_login_in_reg_mouse.png')
     button_register_in_reg = pygame.image.load('images/button_register_in_reg.png')
@@ -71,8 +76,13 @@ def surce_loading():
         'register_string_1': register_string_1,
         'register_string_2': register_string_2,
         'welcome_bg': welcome_bg,
+        'bg_end_screen': bg_end_screen,
         'login_menu': login_menu,
         'register_menu': register_menu,
+        'button_main_menu': button_main_menu,
+        'button_main_menu_mouse': button_main_menu_mouse,
+        'button_replay': button_replay,
+        'button_replay_mouse': button_replay_mouse,
         'button_login_in_reg': button_login_in_reg,
         'button_login_in_reg_mouse': button_login_in_reg_mouse,
         'button_register_in_reg': button_register_in_reg,

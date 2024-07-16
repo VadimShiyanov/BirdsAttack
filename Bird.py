@@ -38,3 +38,4 @@ class Bird:
 
     def is_hit(self, pos):
         return self.image.get_rect(topleft=(self.x, self.y)).collidepoint(pos)
+    

@@ -2,6 +2,8 @@ import pygame
 from surce_loading import surce_loading
 from Button import Button
 from background import Background
+from Game import game
+from end_screen import end_screen
 
 def main_menu(screen):
     assets = surce_loading()
@@ -23,7 +25,6 @@ def main_menu(screen):
 
         if button_play.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
-                running_menu = False
                 return 'play'
 
         if button_leaderboard.draw(screen, mouse):

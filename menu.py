@@ -2,8 +2,6 @@ import pygame
 from surce_loading import surce_loading
 from Button import Button
 from background import Background
-from Game import game
-from end_screen import end_screen
 
 def main_menu(screen):
     assets = surce_loading()

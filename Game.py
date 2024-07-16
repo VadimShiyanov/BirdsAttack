@@ -85,7 +85,7 @@ def game(screen):
             if event.type == pygame.QUIT:
                 assets['background_music'].stop()
                 running = False
-                break
+                return 'quit'
             elif event.type == pygame.MOUSEBUTTONDOWN and ammo > 0:
                 pos = pygame.mouse.get_pos()
                 for bird in birds[:]:
@@ -93,6 +93,5 @@ def game(screen):
                         birds.remove(bird)
                         score += 1
                         ammo -= 1
-    
-    # Ensure the function returns 'end_screen' if the loop exits without hitting the game duration check
+
     return 'end_screen'

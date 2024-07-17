@@ -9,8 +9,8 @@ def end_screen(screen):
     pygame.display.set_caption("End Screen")
     pygame.display.set_icon(assets['icon'])
     end_screen_bg = Background(assets['bg_end_screen'])
-    button_replay = Button(assets['button_replay'], assets['button_replay_mouse'], (100, 800))
-    button_main_menu = Button(assets['button_main_menu'], assets['button_main_menu_mouse'], (650, 800))
+    button_replay = Button(assets['button_replay'], assets['button_replay_mouse'], (285, 690))
+    button_main_menu = Button(assets['button_main_menu'], assets['button_main_menu_mouse'], (1170, 680))
     end_screen_running = True
 
     while end_screen_running:
@@ -33,6 +33,6 @@ def end_screen(screen):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 end_screen_running = False
-                return 'quit'
+                pygame.quit()
 
         pygame.display.update()

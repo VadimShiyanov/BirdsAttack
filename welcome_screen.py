@@ -85,13 +85,14 @@ def welcome():
             pass
 
 def check_connection():
-    response = requests.get("https://1.1.1.1")
-    if response.status_code == 200:
-        welcome()
-    else:
+    try:
+        response = requests.get("https://1.1.1.1")
+        if response.status_code == 200:
+            welcome()
+        else:
+            connection_lost()
+    except requests.exceptions.ConnectionError:
         connection_lost()
-    
-
 
 check_connection()
 

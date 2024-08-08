@@ -79,13 +79,17 @@ def game(screen):
         screen.blit(score_text, (1600, 80))
         screen.blit(ammo_text, (1600, 140))
 
-        pygame.display.update()
+        try:
+            pygame.display.update()
+        except:
+            pass
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                assets['background_music'].stop()
                 running = False
-                return 'quit'
+                pygame.quit()
+
+            
             elif event.type == pygame.MOUSEBUTTONDOWN and ammo > 0:
                 pos = pygame.mouse.get_pos()
                 for bird in birds[:]:

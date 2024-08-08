@@ -34,5 +34,5 @@ def end_screen(screen):
             if event.type == pygame.QUIT:
                 end_screen_running = False
                 pygame.quit()
-
+        
         pygame.display.update()

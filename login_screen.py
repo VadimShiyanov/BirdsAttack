@@ -23,8 +23,8 @@ def login_screen(screen):
     while login_screen_running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                login_screen_running = False
-                return False
+                pygame.quit()
+                
             login_input_box.handle_event(event)
             password_input_box.handle_event(event)
 

@@ -69,6 +69,8 @@ def surce_loading():
     login_menu_error_code_2 = pygame.image.load('images/login_menu_error_code_2.png')
     # fonts
     font = pygame.font.Font('fonts/Roboto-BlackItalic.ttf', 50)
+    font1 = pygame.font.Font('fonts/Roboto-BlackItalic.ttf', 75)
+    font2 = pygame.font.Font('fonts/Roboto-BlackItalic.ttf', 100)
 
     # music
     background_music = pygame.mixer.Sound('music/battle1.mp3')
@@ -124,5 +126,7 @@ def surce_loading():
         'register_menu_error_code_2': register_menu_error_code_2,
         'login_menu_error_code_2': login_menu_error_code_2,
         'font': font,
+        'font1': font1,
+        'font2': font2,
         'background_music': background_music
     }

@@ -1,5 +1,6 @@
 import pygame
 import random
+import backend
 from surce_loading import surce_loading
 from Bird import Bird
 
@@ -45,6 +46,7 @@ def game(screen):
         # Check if game time is over
         elapsed_time = pygame.time.get_ticks() - start_time
         if elapsed_time >= game_duration:
+            backend.save_score_local(score)
             assets['background_music'].stop()
             running = False
             return 'end_screen'  # Make sure to return 'end_screen' here

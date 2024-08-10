@@ -2,10 +2,17 @@ import requests
 import hashlib
 import json
 import os
+import random
+from threading import Thread
 
 SERVER_URL = "https://localhost:8000"
+XOR_KEY = 'bhGc4HfdXv'
 
 def register(username, password):
+    if username == '' or password == '' or not username.strip() or not password.strip():
+        raise Exception("Логин и / или пароль не могут быть пустым значением")
+    if ';' in username or ';' in password:
+        raise Exception("Запрещается использование символа `;` в логине или пароле")
     phash = hashlib.sha256(password.encode()).hexdigest()
     answer = json.loads(requests.get(SERVER_URL + f"/reg/{username};{phash}", verify=False).text)
     if answer["success"] == True:
@@ -16,6 +23,10 @@ def register(username, password):
         return False
 
 def login(username, password):
+    if username == '' or password == '' or not username.strip() or not password.strip():
+        raise Exception("Логин и / или пароль не могут быть пустым значением")
+    if ';' in username or ';' in password:
+        raise Exception("Запрещается использование символа `;` в логине или пароле")
     phash = hashlib.sha256(password.encode()).hexdigest()
     answer = json.loads(requests.get(SERVER_URL + f"/login/{username};{phash}", verify=False).text)
     if answer["success"] == True:
@@ -72,3 +83,22 @@ def onetime_connection_check():
             return False
     except requests.exceptions.RequestException as e:
         return False
+
+def __xor__(data):
+    key = [ord(k) for k in XOR_KEY]
+    edata = ''.join(
+        chr(ord(char) ^ key[i % len(key)]) for i, char in enumerate(data)
+    )
+    return edata
+
+def save_score_local(score: int):
+    with open('lock', 'w') as tf:
+        data = __xor__(str(score))
+        tf.write(data)
+
+def get_score_local():
+    with open('lock', 'r') as tf:
+        score = __xor__(tf.read())
+    os.remove('lock')
+    return score
+    

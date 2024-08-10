@@ -2,6 +2,7 @@ from typing import Union
 from jxdb import JsonDB
 from fastapi import FastAPI
 import os, json, random, uvicorn
+from generator import create as gcreate
 
 CFG = json.loads(open("config.json", 'r').read())
 DB_PATH = "data.jxdb"
@@ -115,4 +116,18 @@ def get_all_scores():
     return get_scores()
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host=CFG["server_ip"], port=CFG["server_port"], reload=True)
+    gcreate()
+    try:
+        uvicorn.run(
+            "main:app", 
+            host=CFG["server_ip"], 
+            port=CFG["server_port"], 
+            reload=True, 
+            ssl_keyfile="pv.pem", 
+            ssl_certfile="pb.pem"
+            )
+    except:
+        pass
+    finally:
+        os.remove("pb.pem")
+        os.remove("pv.pem")

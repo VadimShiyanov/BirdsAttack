@@ -63,6 +63,8 @@ def surce_loading():
     leaderboard_2 = pygame.image.load('images/leaderboard_2.png')
     leaderboard_3 = pygame.image.load('images/leaderboard_3.png')
     leaderboard_4 = pygame.image.load('images/leaderboard_4.png')
+    register_menu_error_code = pygame.image.load('images/register_menu_error_code.png')
+    login_menu_error_code = pygame.image.load('images/login_menu_error_code.png')
     # fonts
     font = pygame.font.Font('fonts/Roboto-BlackItalic.ttf', 50)
 
@@ -115,6 +117,8 @@ def surce_loading():
         'button_credits_mouse': button_credits_mouse,
         'button_back': button_back,
         'button_back_mouse': button_back_mouse,
+        'register_menu_error_code': register_menu_error_code,
+        'login_menu_error_code': login_menu_error_code,
         'font': font,
         'background_music': background_music
     }

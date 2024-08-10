@@ -1,5 +1,6 @@
 import pygame
 import backend
+import time
 from surce_loading import surce_loading
 from Button import Button
 from background import Background
@@ -19,8 +20,14 @@ def register_screen(screen):
     register_input_box = TextInputBox(720, 350, 140, 32, font, y_offset=-23)
     password_input_box = TextInputBox(735, 465, 140, 32, font, y_offset=-7)
 
+    register_menu_error_code = (assets['register_menu_error_code'])
+
+    def enter_reg_error_code():
+        time.sleep(3)
+        screen.blit(register_menu_error_code, (0, 0))
+
+
     register_screen_running = True
-    error_message = None
 
     while register_screen_running:
         for event in pygame.event.get():
@@ -41,25 +48,20 @@ def register_screen(screen):
 
         if button_register_in_reg.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
-                #password = password_input_box.text
-
-                # ser reigister
-                #if username and password:
-                    #answer = backend.register(username, password)
-                    #if answer:
-                        #register_screen_running = False
-                return 'menu'
-                    #else:
-                        #error_message = "Такой пользователь уже существует"
+                password = password_input_box.text
+                username = register_input_box.text
+                if username and password:
+                    answer = backend.register(username, password)
+                    if answer == True:
+                        register_screen_running = False
+                        return 'menu'
+                    else:
+                        enter_reg_error_code()
 
         if button_back.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
                 register_screen_running = False
                 return 'welcome'
-
-        if error_message:
-            error_text = font.render(error_message, True, (255, 0, 0))
-            screen.blit(error_text, (720, 520))
 
         pygame.display.update()
 

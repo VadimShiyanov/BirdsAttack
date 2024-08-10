@@ -1,4 +1,6 @@
 import pygame
+import backend
+import time
 from surce_loading import surce_loading
 from Button import Button
 from background import Background
@@ -17,6 +19,13 @@ def login_screen(screen):
 
     login_input_box = TextInputBox(720, 350, 140, 32, font, y_offset=-7)
     password_input_box = TextInputBox(735, 465, 140, 32, font, y_offset=-7)
+
+    login_menu_error_code = (assets['login_menu_error_code'])
+
+    def enter_log_error_code():
+        time.sleep(3)
+        screen.blit(login_menu_error_code, (0, 0))
+
 
     login_screen_running = True
 
@@ -39,8 +48,14 @@ def login_screen(screen):
 
         if button_login_in_reg.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
-                login_screen_running = False
-                return 'menu'
+                password = password_input_box.text
+                username = login_input_box.text
+                auth = backend.login(username, password)
+                if auth == True:
+                    login_screen_running = False
+                    return 'menu'
+                else:
+                    enter_log_error_code()
 
         if button_back.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:

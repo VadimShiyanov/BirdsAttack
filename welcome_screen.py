@@ -8,9 +8,12 @@ from menu import main_menu
 from end_screen import end_screen
 from Game import game
 from connection_lost_screen import connection_lost
+from alt_loading_screen import show_image_centered
+import alt_loading_screen
 import requests
 import sys
-
+import backend
+import time
 
 def welcome():
     pygame.init()
@@ -85,16 +88,14 @@ def welcome():
             pass
 
 def check_connection():
-    try:
-        response = requests.get("https://1.1.1.1")
-        if response.status_code == 200:
-            welcome()
-        else:
-            connection_lost()
-    except requests.exceptions.ConnectionError:
+    result = backend.onetime_connection_check()
+    if result:
+        welcome()
+    else:
         connection_lost()
+    alt_loading_screen.root.destroy()
 
-check_connection()
+show_image_centered(check_connection)
 
 pygame.quit()
 sys.exit()

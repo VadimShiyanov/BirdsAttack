@@ -6,10 +6,6 @@ import os
 SERVER_URL = "https://localhost:8000"
 
 def register(username, password):
-    if username == '' or password == '':
-        raise Exception("Логин и / или пароль не могут быть пустым значением")
-    if ';' in username or ';' in password:
-        raise Exception("Запрещается использование символа `;` в логине или пароле")
     phash = hashlib.sha256(password.encode()).hexdigest()
     answer = json.loads(requests.get(SERVER_URL + f"/reg/{username};{phash}", verify=False).text)
     if answer["success"] == True:
@@ -20,10 +16,6 @@ def register(username, password):
         return False
 
 def login(username, password):
-    if username == '' or password == '':
-        raise Exception("Логин и / или пароль не могут быть пустым значением")
-    if ';' in username or ';' in password:
-        raise Exception("Запрещается использование символа `;` в логине или пароле")
     phash = hashlib.sha256(password.encode()).hexdigest()
     answer = json.loads(requests.get(SERVER_URL + f"/login/{username};{phash}", verify=False).text)
     if answer["success"] == True:
@@ -70,3 +62,13 @@ def get_my_username():
 
 def all_scores():
     return json.loads(requests.get(SERVER_URL + "/scores", verify=False).text)
+
+def onetime_connection_check():
+    try:
+        response = requests.get(SERVER_URL, verify=False, timeout=5)
+        if response.ok:
+            return True
+        else:
+            return False
+    except requests.exceptions.RequestException as e:
+        return False

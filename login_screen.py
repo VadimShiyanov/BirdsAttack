@@ -21,11 +21,17 @@ def login_screen(screen):
     password_input_box = TextInputBox(735, 465, 140, 32, font, y_offset=-7)
 
     login_menu_error_code = (assets['login_menu_error_code'])
+    login_menu_error_code_2 = (assets['login_menu_error_code_2'])
 
     def enter_log_error_code():
-        time.sleep(3)
         screen.blit(login_menu_error_code, (0, 0))
+        pygame.display.update()
+        time.sleep(3)
 
+    def enter_log_error_code_2():
+        screen.blit(login_menu_error_code_2, (0, 0))
+        pygame.display.update()
+        time.sleep(3)
 
     login_screen_running = True
 
@@ -50,12 +56,18 @@ def login_screen(screen):
             if pygame.mouse.get_pressed()[0]:
                 password = password_input_box.text
                 username = login_input_box.text
-                auth = backend.login(username, password)
-                if auth == True:
-                    login_screen_running = False
-                    return 'menu'
-                else:
-                    enter_log_error_code()
+                try:
+                    auth = backend.login(username, password)
+                    can_continue = True
+                except:
+                    can_continue = False
+                    enter_log_error_code_2()
+                if can_continue:
+                    if auth == True:
+                        login_screen_running = False
+                        return 'menu'
+                    else:
+                        enter_log_error_code()
 
         if button_back.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:

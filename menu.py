@@ -2,10 +2,13 @@ import pygame
 from surce_loading import surce_loading
 from Button import Button
 from background import Background
+import backend
+
+
 
 def main_menu(screen):
     assets = surce_loading()
-
+    font = assets['font']
     pygame.display.set_caption("Main Menu")
     pygame.display.set_icon(assets['icon'])
 
@@ -14,12 +17,19 @@ def main_menu(screen):
     button_leaderboard = Button(assets['button_leaderboard'], assets['button_leaderboard_mouse'], (700, 350))
     button_settings = Button(assets['button_settings'], assets['button_settings_mouse'], (700, 550))
     button_credits = Button(assets['button_credits'], assets['button_credits_mouse'], (700, 750))
+    
 
     running_menu = True
 
     while running_menu:
+        
+        nickname = backend.get_my_username()
+        nickname_label = font.render(nickname, False, (0, 0, 0))
+        
+
         mouse = pygame.mouse.get_pos()
         background_menu.draw(screen)
+        screen.blit(nickname_label, (60, 75))
 
         if button_play.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:

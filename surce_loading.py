@@ -31,6 +31,7 @@ def surce_loading():
     connection_lost_screen = pygame.image.load('images/connection_lost_screen.png')
     register_menu = pygame.image.load('images/register_menu.png')
     bg_end_screen = pygame.image.load('images/bg_end_screen.png')
+    background_settings = pygame.image.load('images/bg_settings.png')
     login_string_1 = pygame.image.load('images/login_string_1.png')
     login_string_2 = pygame.image.load('images/login_string_2.png')
     register_string_1 = pygame.image.load('images/register_string_1.png')
@@ -63,6 +64,13 @@ def surce_loading():
     leaderboard_2 = pygame.image.load('images/leaderboard_2.png')
     leaderboard_3 = pygame.image.load('images/leaderboard_3.png')
     leaderboard_4 = pygame.image.load('images/leaderboard_4.png')
+    settings_sound_on = pygame.image.load('images/settings_sound_on.png')
+    settings_sound_off = pygame.image.load('images/settings_sound_off.png')
+    settings_sound_control_panel_1 = pygame.image.load('images/settings_sound_control_panel_1.png')
+    settings_sound_control_panel_2 = pygame.image.load('images/settings_sound_control_panel_2.png')
+    settings_sound_control_panel_3 = pygame.image.load('images/settings_sound_control_panel_3.png')
+    settings_sound_control_panel_4 = pygame.image.load('images/settings_sound_control_panel_4.png')
+    settings_sound_control_panel_5 = pygame.image.load('images/settings_sound_control_panel_5.png')
     register_menu_error_code = pygame.image.load('images/register_menu_error_code.png')
     login_menu_error_code = pygame.image.load('images/login_menu_error_code.png')
     register_menu_error_code_2 = pygame.image.load('images/register_menu_error_code_2.png')
@@ -80,6 +88,7 @@ def surce_loading():
         'background': background,
         'background_welcome': background_welcome,
         'background_menu': background_menu,
+        'background_settings': background_settings,
         'login_string_1': login_string_1,
         'login_string_2': login_string_2,
         'register_string_1': register_string_1,
@@ -121,6 +130,13 @@ def surce_loading():
         'button_credits_mouse': button_credits_mouse,
         'button_back': button_back,
         'button_back_mouse': button_back_mouse,
+        'settings_sound_on': settings_sound_on,
+        'settings_sound_off': settings_sound_off,
+        'settings_sound_control_panel_1': settings_sound_control_panel_1,
+        'settings_sound_control_panel_2': settings_sound_control_panel_2,
+        'settings_sound_control_panel_3': settings_sound_control_panel_3,
+        'settings_sound_control_panel_4': settings_sound_control_panel_4,
+        'settings_sound_control_panel_5': settings_sound_control_panel_5,
         'register_menu_error_code': register_menu_error_code,
         'login_menu_error_code': login_menu_error_code,
         'register_menu_error_code_2': register_menu_error_code_2,

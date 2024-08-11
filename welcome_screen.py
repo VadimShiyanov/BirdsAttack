@@ -9,6 +9,7 @@ from end_screen import end_screen
 from Game import game
 from connection_lost_screen import connection_lost
 from alt_loading_screen import show_image_centered
+from settings_screen import settings
 import alt_loading_screen
 import requests
 import sys
@@ -60,6 +61,8 @@ def welcome():
             result = main_menu(screen)
             if result == "play":
                 current_screen = "play"
+            elif result == "settings":
+                current_screen = settings(screen)  # Возвращаем результат в current_screen
             elif result == "quit":
                 current_screen = "quit"
 

@@ -15,8 +15,9 @@ def end_screen(screen):
     button_replay = Button(assets['button_replay'], assets['button_replay_mouse'], (285, 690))
     button_main_menu = Button(assets['button_main_menu'], assets['button_main_menu_mouse'], (1170, 680))
     end_screen_running = True
-    score = backend.get_score_local() #score now
     best_score = backend.get_my_score() #best score
+    score = backend.get_score_local() #score now
+    backend.send_score(score)
     score_label = font2.render(score, False, (255, 255, 255))
     best_score_label = font1.render(best_score, False, (255, 255, 255))
 

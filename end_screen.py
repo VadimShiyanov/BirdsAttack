@@ -3,6 +3,7 @@ import backend
 from surce_loading import surce_loading
 from Button import Button
 from background import Background
+from sound_manager import SoundManager
 
 def end_screen(screen, sound_manager):
     assets = surce_loading()
@@ -19,6 +20,7 @@ def end_screen(screen, sound_manager):
     backend.send_score(score)
     score_label = font2.render(str(score), False, (255, 255, 255)) 
     best_score_label = font1.render(str(best_score), False, (255, 255, 255))
+    sound_manager.play_end_music()
 
     while end_screen_running:
         for event in pygame.event.get():

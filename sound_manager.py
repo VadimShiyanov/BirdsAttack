@@ -6,17 +6,16 @@ class SoundManager:
         pygame.mixer.init()
         self.sound_on = True
         
-        # Инициализация музыки
+
         self.menu_music = pygame.mixer.Sound('music/menu.mp3')
         self.battle_music = pygame.mixer.Sound('music/battle.mp3')
         self.end_music = pygame.mixer.Sound('music/end.mp3')
 
-        # Инициализация каналов
+
         self.music_channel = pygame.mixer.Channel(0)
         self.battle_channel = pygame.mixer.Channel(1)
         self.end_channel = pygame.mixer.Channel(2)
 
-        # Начальный уровень громкости
         self.volume = 1.0
         self.set_volume(self.volume)
 
@@ -40,7 +39,8 @@ class SoundManager:
     def play_end_music(self):
         if self.sound_on:
             time.sleep(5)
-            self.end_channel.play(self.end_music, loops=-1)
+            self.end_channel.play(self.end_music, loops=0)
+            
 
     def stop_battle_music(self):
         self.battle_channel.stop()

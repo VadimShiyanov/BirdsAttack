@@ -5,8 +5,9 @@ from surce_loading import surce_loading
 from Button import Button
 from background import Background
 from TextInputBox import TextInputBox
+from sound_manager import SoundManager  # Импортируйте SoundManager
 
-def login_screen(screen):
+def login_screen(screen, sound_manager):
     assets = surce_loading()
 
     pygame.display.set_caption("Login Screen")
@@ -20,8 +21,8 @@ def login_screen(screen):
     login_input_box = TextInputBox(720, 350, 140, 32, font, y_offset=-7)
     password_input_box = TextInputBox(735, 465, 140, 32, font, y_offset=-7)
 
-    login_menu_error_code = (assets['login_menu_error_code'])
-    login_menu_error_code_2 = (assets['login_menu_error_code_2'])
+    login_menu_error_code = assets['login_menu_error_code']
+    login_menu_error_code_2 = assets['login_menu_error_code_2']
 
     def enter_log_error_code():
         screen.blit(login_menu_error_code, (0, 0))
@@ -39,6 +40,7 @@ def login_screen(screen):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                return 'quit'
                 
             login_input_box.handle_event(event)
             password_input_box.handle_event(event)
@@ -76,4 +78,4 @@ def login_screen(screen):
 
         pygame.display.update()
 
-    return True
+    return 'quit'

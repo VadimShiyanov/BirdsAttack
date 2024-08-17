@@ -81,7 +81,9 @@ def surce_loading():
     font2 = pygame.font.Font('fonts/Roboto-BlackItalic.ttf', 100)
 
     # music
-    background_music = pygame.mixer.Sound('music/battle1.mp3')
+    battle_music = pygame.mixer.Sound('music/battle.mp3')
+    end_music = pygame.mixer.Sound('music/end.mp3')
+    menu_music = pygame.mixer.Sound('music/menu.mp3')
 
     return {
         'icon': icon,
@@ -144,5 +146,7 @@ def surce_loading():
         'font': font,
         'font1': font1,
         'font2': font2,
-        'background_music': background_music
+        'battle_music': battle_music,
+        'end_music': end_music,
+        'menu_music': menu_music
     }

@@ -31,7 +31,7 @@ class TextInputBox:
 
     def update(self):
         width = max(200, self.txt_surface.get_width() + 10)
-        self.rect.w = width
+        self.rect.w = width * 5
 
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x + 5, self.rect.y + self.y_offset)) 

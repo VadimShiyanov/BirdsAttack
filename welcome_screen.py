@@ -11,12 +11,12 @@ from connection_lost_screen import connection_lost
 from alt_loading_screen import show_image_centered
 from settings_screen import settings
 import alt_loading_screen
-import requests
 import sys
 import backend
+from sound_manager import SoundManager
 import time
-
-def welcome():
+sound_manager = SoundManager()  
+def welcome(sound_manager):
     pygame.init()
     assets = surce_loading()
 
@@ -28,7 +28,7 @@ def welcome():
     button_login = Button(assets['button_login'], assets['button_login_mouse'], (700, 330))
     button_register = Button(assets['button_register'], assets['button_register_mouse'], (700, 480))
 
-    current_screen = "welcome"  # Initial state
+    current_screen = "welcome"
 
     while current_screen != "quit":
         if current_screen == "welcome":
@@ -37,63 +37,64 @@ def welcome():
 
             if button_login.draw(screen, mouse):
                 if pygame.mouse.get_pressed()[0]:
-                    current_screen = login_screen(screen)
+                    current_screen = login_screen(screen, sound_manager)
 
             if button_register.draw(screen, mouse):
                 if pygame.mouse.get_pressed()[0]:
-                    current_screen = register_screen(screen)
+                    current_screen = register_screen(screen, sound_manager)
 
         elif current_screen == "login":
-            result = login_screen(screen)
+            result = login_screen(screen, sound_manager)
             if result == "menu":
                 current_screen = "menu"
             elif result == "quit":
                 current_screen = "quit"
 
         elif current_screen == "register":
-            result = register_screen(screen)
+            result = register_screen(screen, sound_manager)
             if result == "menu":
                 current_screen = "menu"
             elif result == "quit":
                 current_screen = "quit"
 
         elif current_screen == "menu":
-            result = main_menu(screen)
+            result = main_menu(screen, sound_manager)
             if result == "play":
+                sound_manager.music_channel.stop()
                 current_screen = "play"
             elif result == "settings":
-                current_screen = settings(screen)  # Возвращаем результат в current_screen
+                current_screen = settings(screen, sound_manager)
             elif result == "quit":
                 current_screen = "quit"
 
         elif current_screen == "play":
-            result = game(screen)
+            sound_manager.play_battle_music()
+            result = game(screen, sound_manager)
             if result == "end_screen":
+                sound_manager.stop_battle_music()
                 current_screen = "end_screen"
 
         elif current_screen == "end_screen":
-            result = end_screen(screen)
+            result = end_screen(screen, sound_manager)
+            sound_manager.play_end_music()
             if result == "menu":
+                sound_manager.stop_end_music()
+                if sound_manager.is_sound_on():
+                    sound_manager.music_channel.play(sound_manager.menu_music, loops=-1)
                 current_screen = "menu"
             elif result == "play":
-                current_screen = "play"
+                sound_manager.stop_end_music()
 
-        try:
-            pygame.display.update()
-        except:
-            pass
+        pygame.display.update()
 
-        try:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    current_screen = "quit"
-        except:
-            pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                current_screen = "quit"
 
 def check_connection():
     result = backend.onetime_connection_check()
     if result:
-        welcome()
+        welcome(sound_manager)
     else:
         connection_lost()
     alt_loading_screen.root.destroy()

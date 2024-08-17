@@ -5,8 +5,9 @@ from surce_loading import surce_loading
 from Button import Button
 from background import Background
 from TextInputBox import TextInputBox
+from sound_manager import SoundManager  # Импортируйте SoundManager
 
-def register_screen(screen):
+def register_screen(screen, sound_manager):
     assets = surce_loading()
     pygame.display.set_caption("Register Screen")
     pygame.display.set_icon(assets['icon'])
@@ -20,8 +21,8 @@ def register_screen(screen):
     register_input_box = TextInputBox(720, 350, 140, 32, font, y_offset=-23)
     password_input_box = TextInputBox(735, 465, 140, 32, font, y_offset=-7)
 
-    register_menu_error_code = (assets['register_menu_error_code'])
-    register_menu_error_code_2 = (assets['register_menu_error_code_2'])
+    register_menu_error_code = assets['register_menu_error_code']
+    register_menu_error_code_2 = assets['register_menu_error_code_2']
 
     def enter_reg_error_code():
         screen.blit(register_menu_error_code, (0, 0))
@@ -33,13 +34,13 @@ def register_screen(screen):
         pygame.display.update()
         time.sleep(3)
 
-
     register_screen_running = True
 
     while register_screen_running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                return 'quit'
             
             register_input_box.handle_event(event)
             password_input_box.handle_event(event)
@@ -64,7 +65,7 @@ def register_screen(screen):
                     can_continue = False
                     enter_reg_error_code_2()
                 if can_continue:
-                    if answer == True:
+                    if answer:
                         register_screen_running = False
                         return 'menu'
                     else:
@@ -78,4 +79,4 @@ def register_screen(screen):
 
         pygame.display.update()
 
-    return True
+    return 'quit'

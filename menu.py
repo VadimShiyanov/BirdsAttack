@@ -3,10 +3,9 @@ from surce_loading import surce_loading
 from Button import Button
 from background import Background
 import backend
+from sound_manager import SoundManager
 
-
-
-def main_menu(screen):
+def main_menu(screen, sound_manager):
     assets = surce_loading()
     font = assets['font']
     pygame.display.set_caption("Main Menu")
@@ -17,18 +16,18 @@ def main_menu(screen):
     button_leaderboard = Button(assets['button_leaderboard'], assets['button_leaderboard_mouse'], (700, 350))
     button_settings = Button(assets['button_settings'], assets['button_settings_mouse'], (700, 550))
     button_credits = Button(assets['button_credits'], assets['button_credits_mouse'], (700, 750))
-    
+
+    if sound_manager.is_sound_on() and not sound_manager.music_channel.get_busy():
+        sound_manager.music_channel.play(sound_manager.menu_music, loops=-1)
 
     running_menu = True
 
     while running_menu:
+        mouse = pygame.mouse.get_pos()
+        background_menu.draw(screen)
         
         nickname = backend.get_my_username()
         nickname_label = font.render(nickname, False, (0, 0, 0))
-        
-
-        mouse = pygame.mouse.get_pos()
-        background_menu.draw(screen)
         screen.blit(nickname_label, (60, 75))
 
         if button_play.draw(screen, mouse):
@@ -58,3 +57,4 @@ def main_menu(screen):
                 return 'quit'
 
     return 'quit'
+

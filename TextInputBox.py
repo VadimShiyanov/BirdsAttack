@@ -2,7 +2,7 @@ import pygame
 
 class TextInputBox:
     def __init__(self, x, y, w, h, font, y_offset=-2, max_length=20, text_color=pygame.Color('black')):
-        self.rect = pygame.Rect(x, y, w, h)
+        self.rect = pygame.Rect(x, y, w * 10, h)
         self.text_color = text_color
         self.text = ''
         self.font = font

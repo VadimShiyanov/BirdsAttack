@@ -7,6 +7,8 @@ from register_screen import register_screen
 from menu import main_menu
 from end_screen import end_screen
 from Game import game
+from Leaderbord_screen import leaderboard
+from credits_screen import credits
 from connection_lost_screen import connection_lost
 from alt_loading_screen import show_image_centered
 from settings_screen import settings
@@ -64,6 +66,10 @@ def welcome(sound_manager):
                 current_screen = "play"
             elif result == "settings":
                 current_screen = settings(screen, sound_manager)
+            elif result == "leaderboard":
+                current_screen = leaderboard(screen)
+            elif result == "credits":
+                current_screen = credits(screen)
             elif result == "quit":
                 current_screen = "quit"
 

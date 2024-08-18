@@ -37,12 +37,12 @@ def end_screen(screen, sound_manager):
 
         if button_replay.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
-                sound_manager.stop_end_music()  # Остановите музыку конца
+                sound_manager.stop_end_music()
                 return 'play'
 
         if button_main_menu.draw(screen, mouse):
             if pygame.mouse.get_pressed()[0]:
-                sound_manager.stop_end_music()  # Остановите музыку конца
+                sound_manager.stop_end_music()
                 return 'menu'
 
         pygame.display.update()

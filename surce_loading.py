@@ -26,6 +26,7 @@ def surce_loading():
 
     background_menu = pygame.image.load('images/bg_menu.png')
     background_welcome = pygame.image.load('images/welcome_bg.png')
+    bg_credits = pygame.image.load('images/credits_bg.png')
     welcome_bg = pygame.image.load('images/welcome_bg.png')
     login_menu  = pygame.image.load('images/login_menu.png')
     connection_lost_screen = pygame.image.load('images/connection_lost_screen.png')
@@ -58,6 +59,8 @@ def surce_loading():
     button_credits_mouse = pygame.image.load('images/button_credits_mouse.png')
     button_back = pygame.image.load('images/button_back.png')
     button_back_mouse = pygame.image.load('images/button_back_mouse.png')
+    button_back_mini = pygame.image.load('images/button_back_mini.png')
+    button_back_mouse_mini = pygame.image.load('images/button_back_mouse_mini.png')
     button_ok = pygame.image.load('images/button_ok.png')
     button_ok_mouse = pygame.image.load('images/button_ok_mouse.png')
     leaderboard_1 = pygame.image.load('images/leaderboard_1.png')
@@ -91,6 +94,7 @@ def surce_loading():
         'background_welcome': background_welcome,
         'background_menu': background_menu,
         'background_settings': background_settings,
+        'bg_credits': bg_credits,
         'login_string_1': login_string_1,
         'login_string_2': login_string_2,
         'register_string_1': register_string_1,
@@ -132,6 +136,8 @@ def surce_loading():
         'button_credits_mouse': button_credits_mouse,
         'button_back': button_back,
         'button_back_mouse': button_back_mouse,
+        'button_back_mini': button_back_mini,
+        'button_back_mouse_mini': button_back_mouse_mini,
         'settings_sound_on': settings_sound_on,
         'settings_sound_off': settings_sound_off,
         'settings_sound_control_panel_1': settings_sound_control_panel_1,
